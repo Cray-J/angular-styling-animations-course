@@ -17,6 +17,14 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
   }
 
+  getProjectStatusClass() {
+    return {
+      'label-success': this.project.status === 'active',
+      'label-default': this.project.status === 'inactive',
+      'label-danger': this.project.status === 'critical'
+    };
+  }
+
   onUpdateStatus(newStatus: string) {
     this.statusUpdated.emit(newStatus);
   }

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 
 import { Project } from './project.model';
 
 import { ProjectsService } from './projects.service';
 import { itemStateTrigger, markedTrigger, slideStateTrigger } from './animations';
+import {routeFadeStateTrigger, routeSlideStateTrigger} from '../shared/route-animations';
 
 @Component({
   selector: 'app-projects',
@@ -12,7 +13,9 @@ import { itemStateTrigger, markedTrigger, slideStateTrigger } from './animations
   animations: [
     markedTrigger,
     itemStateTrigger,
-    slideStateTrigger
+    slideStateTrigger,
+    routeFadeStateTrigger,
+    routeSlideStateTrigger
   ]
 })
 export class ProjectsComponent implements OnInit {
@@ -21,6 +24,8 @@ export class ProjectsComponent implements OnInit {
   markedPrjIndex = 0;
   progress = 'progressing';
   createNew = false;
+  // @HostBinding('@routeFadeState') routeAnimation = true;
+  @HostBinding('@routeSlideState') routeAnimation = true;
 
   constructor(private prjService: ProjectsService) { }
 

@@ -15,7 +15,7 @@ import { buttonStateTrigger, formStateTrigger } from './animations';
 export class NewProjectComponent implements OnInit {
   @Output() creationCancelled = new EventEmitter<void>();
   @Output() projectCreated = new EventEmitter<Project>();
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', {static: false}) form: NgForm;
   availableStatus = [
     'active',
     'inactive',
